@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title Users List
+    // Путь к CSS исправлен под префикс /public/
+    link(rel='stylesheet', href='/public/css/style.css')
+  body
+    h1 Users List
+    a.btn(href='/create') + Create New User
+    
+    table
+      thead
+        tr
+          th ID
+          th Name
+          th Email
+          th Actions
+      tbody
+        each user in users
+          tr
+            td= user.id
+            td= user.name
+            td= user.email
+            td.actions
+              // Ссылка на редактирование ведет на /edit/ID
+              a.btn-edit(href=`/edit/${user.id}`) Edit
+              | &nbsp;
+              // Кнопка удаления вызывает JS функцию
+              button.btn-del(onclick=`deleteUser(${user.id})`) Delete
+
+    script.
+      async function deleteUser(id) {
+        if(!confirm('Delete this user?')) return;
+        
+        try {
+          const res = await fetch(`/delete/${id}`, { method: 'DELETE' });
+          if (res.ok) {
+            window.location.reload();
+          } else {
+            alert('Error deleting');
+          }
+        } catch (e) {
+          console.error(e);
+          alert('Network error');
+        }
+      }

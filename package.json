@@ -1,0 +1,21 @@
+{
+  "name": "fastify-users-app",
+  "version": "1.0.0",
+  "description": "Simple Fastify User Manager",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0",
+    "@fastify/static": "^7.0.0",
+    "@fastify/view": "^8.0.0",
+    "@fastify/formbody": "^7.4.0",
+    "pug": "^3.0.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

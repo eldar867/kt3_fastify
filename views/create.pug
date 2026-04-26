@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Create User
+    link(rel='stylesheet', href='/public/css/style.css')
+  body
+    h1 Create User
+    form(action='/create' method='POST')
+      div.form-group
+        label Name:
+        input(type='text' name='name' required placeholder='Enter name')
+      div.form-group
+        label Email:
+        input(type='email' name='email' required placeholder='Enter email')
+      button(type='submit') Save User
+    br
+    a(href='/users') ← Back to List

@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Edit User
+    link(rel='stylesheet', href='/public/css/style.css')
+  body
+    h1 Edit User ##{user.id}
+    // Отправляем на /update/ID
+    form(action=`/update/${user.id}` method='POST')
+      div.form-group
+        label Name:
+        input(type='text' name='name' value=user.name required)
+      div.form-group
+        label Email:
+        input(type='email' name='email' value=user.email required)
+      button(type='submit') Update User
+    br
+    a(href='/users') ← Back to List
